@@ -6,22 +6,9 @@ const path = require('node:path');
 const regions = require('../catalog-regions');
 const availability = require('../collections/flixpatrol-availability');
 const { serialize } = require('../scripts/refresh_flixpatrol_availability');
+const { appContext } = require('../scripts/lib/wizard-validation');
 const root = path.join(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
-
-function appContext(file = 'collections/database.js') {
-  const context = vm.createContext({
-    window: { KaptainRegions: regions, KAPTAIN_FLIXPATROL_AVAILABILITY: availability },
-    document: { addEventListener() {}, getElementById() { return null; }, querySelectorAll() { return []; },
-      querySelector() { return null; }, documentElement: { getAttribute() { return null; }, removeAttribute() {} } },
-    localStorage: { getItem() { return null; }, setItem() {} },
-    console, setTimeout, clearTimeout, URL, Blob
-  });
-  vm.runInContext(read(file), context);
-  vm.runInContext(read('app.js'), context);
-  vm.runInContext('database = window.NUVIO_DATABASE; initializeSelections();', context);
-  return context;
-}
 
 const addon = (service, type = 'movie', country = 'us') => ({
   provider: 'addon', addonId: 'aio-metadata', type,
@@ -131,6 +118,10 @@ test('native regional chart provisioning includes selected catalogs and waits fo
   await ctx.window.__testRegions.ensureRegionalChartAddon(collections, 3);
   assert.equal(saves.length, 1);
   assert.deepEqual(saves[0].catalogs.map(c => c.id), ['flixpatrol.skyshowtime.hu.movie', 'flixpatrol.skyshowtime.hu.series']);
+  for (const catalog of saves[0].catalogs) {
+    assert.equal(catalog.metadata.countrySlug, 'hungary');
+    assert.equal(catalog.enableRatingPosters, true);
+  }
   assert.equal(installs[0][1], 3);
   assert.equal(installs[0][2][0].name, 'AIO Metadata (Regional Top 10)');
   ctx.window.kaptainCustomize.country = 'US';
@@ -230,7 +221,11 @@ for (const country of ['HU', 'NL', 'US']) {
     }
     const charts = aio.catalogs.filter(c => c.source === 'flixpatrol');
     assert.equal(charts.length, country === 'US' ? 0 : 2);
-    for (const chart of charts) assert.ok(chart.id.includes(`.${country.toLowerCase()}.`));
+    for (const chart of charts) {
+      assert.ok(chart.id.includes(`.${country.toLowerCase()}.`));
+      assert.equal(chart.metadata.countrySlug, regions.REGION_SLUGS[country]);
+      assert.equal(chart.enableRatingPosters, true);
+    }
     for (const entry of aio.catalogs.filter(c => c.id.startsWith('tmdb.discover.skyshowtime_'))) {
       assert.equal(entry.metadata.discover.params.watch_region, country);
       assert.equal(entry.metadata.discover.params.with_watch_providers, '1773');

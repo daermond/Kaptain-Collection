@@ -5,6 +5,71 @@ charts, SkyShowtime, and Hungarian Cinema to the existing static editor.
 
 Preview: https://daermond.github.io/Kaptain-Collection/
 
+## FlixPatrol runtime compatibility fix (2026-10-04)
+
+Regional IDs alone are insufficient on AIOMetadata deployments that cannot
+translate ISO country codes. The regional chart builder emitted `metadata: {}`,
+and synthesized friend-pack catalogs omitted country metadata entirely. Those
+deployments can request `hu.json` instead of `hungary.json`, yielding empty/error
+catalog responses and disappearing rows in Nuvio despite healthy crawler data.
+This is a confirmed configuration defect; the reported device symptom has not
+been reproduced with a personal Nuvio account.
+
+All FlixPatrol descriptors now use the shared `KaptainRegions.chartCatalog()`
+builder and the existing `REGION_SLUGS` mapping. For example,
+`flixpatrol.netflix.hu.movie` carries `metadata.countrySlug: "hungary"`, while
+NL carries `"netherlands"`. Global IDs keep `"world"` (AIOMetadata selects
+`global.json`). Movie/series/all types, display types and rating-poster support
+follow the native catalog format; collection placement still uses `showInHome:
+false`. Existing friend templates are normalized too, preserving their names,
+display preferences and unrelated metadata. Native regional provisioning,
+the later shared For You instance, friend setup, Self-Host and AIO Streams
+receive the same country metadata. Unsupported/global/country-locked handling
+and Hungary/SkyShowtime/Hungarian Cinema selection behavior stay intact.
+
+**Existing installs need a regenerated AIO configuration.** Reload the preview
+and rerun Guided Setup for the desired profile, or regenerate and apply the
+Self-Host/AIO export. Refreshing the editor does not update an already saved
+remote AIO configuration.
+
+The native creator and handler were checked at AIOMetadata commit
+[`e1c9cc6`](https://github.com/cedya77/aiometadata/tree/e1c9cc6a0934e3cef5221d0cbfe1ad75af200332):
+[`catalogUtils.ts`](https://github.com/cedya77/aiometadata/blob/e1c9cc6a0934e3cef5221d0cbfe1ad75af200332/configure/src/utils/catalogUtils.ts),
+[`getCatalog.ts`](https://github.com/cedya77/aiometadata/blob/e1c9cc6a0934e3cef5221d0cbfe1ad75af200332/addon/lib/getCatalog.ts),
+and [`flixpatrolUtils.ts`](https://github.com/cedya77/aiometadata/blob/e1c9cc6a0934e3cef5221d0cbfe1ad75af200332/addon/utils/flixpatrolUtils.ts).
+
+### Hosted checks and limits
+
+On 2026-10-04 both [ElfHosted](https://aiometadata.elfhosted.com/manifest.json)
+and [Midnight](https://aiometadatafortheweebs.midnightignite.me/manifest.json)
+reported version **3.4.1**; `/health` was healthy. `/api/version` returned 404,
+and no commit identifier was exposed in the tested public responses.
+Their read-only `POST /api/flixpatrol/probe` returned `hasMovies: true` and
+`hasShows: true` for `countrySlug: "hungary"` with Netflix, HBO Max, Disney,
+Prime Video and SkyShowtime. Both also accepted `countrySlug: "hu"` for Netflix.
+
+There was no observed host capability difference in these probes. Host racing,
+user host choices, catalog ceilings and host-specific Trakt authentication
+therefore remain unchanged. Canonical metadata removes reliance on fallback
+without adding per-setup probes or assuming a version proves compatibility.
+The probes confirm chart sections, not TMDB hydration, configured catalog
+responses or Nuvio device rendering. If rows still disappear after regenerating
+the configuration, the configured catalog response and Nuvio behavior need a
+separate reproduction; public probes cannot establish the original cause.
+
+| Finding | Class | Evidence | Conflict or limitation | Confidence |
+| --- | --- | --- | --- | --- |
+| Generated catalogs omitted the native country slug | Fact | Builders and upstream creator linked above | Fixed across construction paths | high |
+| HU/NL descriptors resolve to charts with TMDB IDs | Fact | Offline fixture tests and optional live validator | Does not hydrate metadata or render Nuvio | high |
+| Missing slugs caused the reported disappearing rows | Inference | Handler uses metadata before the ID country | Both tested hosts currently accept ISO fallback; no device reproduction | medium |
+
+Confidence is high in the configuration fix and medium in attributing the
+original symptom to it. The material counter-evidence is the hosts' current
+ISO support. What remains unknown is whether this resolves the affected Nuvio
+profile: no account/device reproduction was available, so a further cause may
+remain. Regenerating its config and inspecting the affected configured catalog
+response plus the Nuvio row would resolve that question.
+
 ## Try it
 
 1. Open **Guided Customize** and choose **Hungary** in Your Region.
@@ -75,6 +140,8 @@ third-party dependency or secret requirement.
 
 ```sh
 npm test
+npm run validate:flixpatrol
+npm run validate:flixpatrol -- --region NL
 python -m http.server 8080 --bind 127.0.0.1
 ```
 
@@ -82,6 +149,27 @@ Open http://127.0.0.1:8080/. Tests cover Netflix, HBO Max, SkyShowtime, HU/NL/US
 unsupported sections, variants/global/locked sources, friend-pack regionalization,
 selection/reference consistency, immutable native export, real Self-Host wizard
 output, SkyShowtime genre filters, and Hungarian country/language preservation.
+
+Unit tests additionally resolve actual native/friend/Self-Host outputs and the
+AIO Streams descriptor converter against a pinned Hungary crawler fixture,
+with ISO fallback deliberately absent. An actual AIO Streams build is exercised
+with mocked saves/installs to check both movie and series routing. Missing or
+stale slugs, empty charts, unresolved TMDB entries and missing variants fail
+validation. The fixture contains only chart IDs/ranks/TMDB data and records its
+source commit and scrape time; unit tests never call public hosts.
+
+`validate:flixpatrol` is a separate optional live check. It generates descriptors
+through the real wizard paths, fetches each required crawler region file once,
+and fails on mismatched country metadata or a chart without usable TMDB IDs.
+It does not create hosted configs or access Nuvio accounts. To run offline:
+
+```sh
+npm run validate:flixpatrol -- --fixture tests/fixtures/flixpatrol-hungary.json
+```
+
+The live HU and NL checks passed on 2026-10-04 (36 descriptors per region).
+Every HU chart had 10 usable entries. NL HBO Max/Disney series each had 9 usable
+TMDB entries; the remaining checked NL charts had 10.
 
 The static editor works on GitHub Pages. The optional Python YouTube/GIF helper
 is not hosted there; it still requires the supplied local server.

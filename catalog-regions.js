@@ -42,11 +42,16 @@
   function chartCatalog(source) {
     const parsed = parseFlixPatrol(source.catalogId);
     if (!parsed) return null;
+    // Match AIOMetadata's native creator; older hosts cannot resolve ISO codes.
+    const countrySlug = parsed.country === 'world' ? 'world' : REGION_SLUGS[parsed.country.toUpperCase()];
+    const metadata = { ...source.metadata };
+    if (countrySlug) metadata.countrySlug = countrySlug;
     return {
-      id: source.catalogId, type: source.type || parsed.type,
+      id: source.catalogId, type: parsed.type,
       name: source.title || source.name || source.catalogId, source: 'flixpatrol',
-      enabled: true, showInHome: false, displayType: source.type || parsed.type,
-      genreSelection: 'standard', sort: 'default', order: 'asc', metadata: {}
+      enabled: true, showInHome: false, displayType: source.displayType || (parsed.type === 'all' ? 'movie' : parsed.type),
+      genreSelection: 'standard', sort: 'default', order: 'asc', cacheTTL: 86400,
+      enableRatingPosters: true, metadata
     };
   }
 

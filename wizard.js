@@ -867,6 +867,8 @@
   }
 
   function synthesizeFriendCatalog(id, typeHint) {
+    const chart = window.KaptainRegions.chartCatalog({ catalogId: id });
+    if (chart) return chart;
     const type = typeHint === 'series' || typeHint === 'tv' ? 'series' : (typeHint === 'all' ? 'all' : 'movie');
     return {
       id,
@@ -874,7 +876,7 @@
       name: id,
       enabled: true,
       showInHome: false,
-      source: window.KaptainRegions.parseFlixPatrol(id) ? 'flixpatrol' : (String(id).indexOf('mdblist.') === 0 ? 'mdblist' : 'custom'),
+      source: String(id).indexOf('mdblist.') === 0 ? 'mdblist' : 'custom',
       sort: 'default',
       order: 'asc',
       cacheTTL: 86400,
@@ -902,8 +904,12 @@
     (allCatalogs || []).forEach((c) => { if (c && c.id) byId.set(c.id, c); });
     const out = [];
     wantedIds.forEach((id) => {
-      if (byId.has(id)) out.push(JSON.parse(JSON.stringify(byId.get(id))));
-      else out.push(synthesizeFriendCatalog(id, typeById[id]));
+      if (byId.has(id)) {
+        const entry = JSON.parse(JSON.stringify(byId.get(id)));
+        const chart = window.KaptainRegions.chartCatalog({ ...entry, catalogId: id });
+        // Templates can also lack a slug (or contain one for the old region).
+        out.push(chart ? { ...chart, ...entry, type: chart.type, source: chart.source, metadata: chart.metadata } : entry);
+      } else out.push(synthesizeFriendCatalog(id, typeById[id]));
     });
     return out;
   }
@@ -2933,6 +2939,8 @@
   // Re-adds the constant boilerplate fields the published template strips out
   // to stay small, producing a full AIO Metadata catalog config entry.
   function aioCatalogConfigEntry(templateEntry) {
+    const chart = window.KaptainRegions.chartCatalog({ ...templateEntry, catalogId: templateEntry.id });
+    if (chart) return chart;
     // Matches AIO_PRESET_JSON's minimal shape as closely as possible —
     // `metadata` is the one addition, since it's load-bearing (it's what
     // tells AIO Metadata which TMDB discover query or Trakt list to actually
