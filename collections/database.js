@@ -62740,7 +62740,7 @@ window.NUVIO_DATABASE = [
         "id": "folder-HUNGARIAN-CINEMA",
         "title": "Hungarian Cinema",
         "tileShape": "LANDSCAPE",
-        "coverImageUrl": "https://flagcdn.com/w640/hu.png",
+        "coverImageUrl": "https://daermond.github.io/Kaptain-Collection/assets/hungarian-cinema.png",
         "coverEmoji": "🇭🇺",
         "hideTitle": false,
         "focusGifEnabled": false,

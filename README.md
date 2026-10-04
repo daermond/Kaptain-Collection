@@ -131,7 +131,9 @@ TMDB provider verification and parser compatibility were checked against
 and [FlixPatrol implementation](https://github.com/cedya77/aiometadata/blob/main/addon/utils/flixpatrolUtils.ts).
 SkyShowtime artwork uses the same
 [Prism artwork repository](https://github.com/bramst0ne/prism-wallpapers/tree/main/collections/networks/5944-skyshowtime)
-already used by the editor; Hungarian Cinema uses a Hungarian flag from FlagCDN.
+already used by the editor; Hungarian Cinema uses the supplied Hungary-outline
+artwork, bundled at `assets/hungarian-cinema.png` and served by this fork's Pages
+preview. Its absolute URL also works in exported Nuvio collections.
 
 ## Local preview and validation
 
