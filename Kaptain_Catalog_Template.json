@@ -91258,5 +91258,194 @@
       "description": "TMDB Discover (tv)"
     },
     "instId": "16"
+  },
+  {
+    "id": "tmdb.discover.hungarian_cinema_popular_hungarian_movies",
+    "collectionTitle": "International Cinema",
+    "folderTitle": "Hungarian Cinema",
+    "sourceTitle": "Popular Hungarian Movies",
+    "name": "Popular Hungarian Movies",
+    "type": "movie",
+    "source": "tmdb",
+    "metadata": {
+      "itemCount": 200,
+      "mediatype": "movie",
+      "author": "Kaptain",
+      "discover": {
+        "version": 2,
+        "source": "tmdb",
+        "mediaType": "movie",
+        "params": {
+          "sort_by": "popularity.desc",
+          "include_adult": false,
+          "without_genres": "16,99",
+          "primary_release_date.lte": "2026-09-01",
+          "with_release_type": "4|5|6",
+          "with_original_language": "hu",
+          "vote_count.gte": 50,
+          "with_origin_country": "HU"
+        }
+      },
+      "description": "TMDB Discover (movie)"
+    },
+    "instId": "14"
+  },
+  {
+    "id": "tmdb.discover.hungarian_cinema_top_rated_acclaimed_hungarian_movies",
+    "collectionTitle": "International Cinema",
+    "folderTitle": "Hungarian Cinema",
+    "sourceTitle": "Top Rated & Acclaimed Hungarian Movies",
+    "name": "Top Rated & Acclaimed Hungarian Movies",
+    "type": "movie",
+    "source": "tmdb",
+    "metadata": {
+      "itemCount": 200,
+      "mediatype": "movie",
+      "author": "Kaptain",
+      "discover": {
+        "version": 2,
+        "source": "tmdb",
+        "mediaType": "movie",
+        "params": {
+          "sort_by": "vote_average.desc",
+          "include_adult": false,
+          "without_genres": "16,99",
+          "primary_release_date.lte": "2026-09-01",
+          "with_release_type": "4|5|6",
+          "with_original_language": "hu",
+          "vote_count.gte": 100,
+          "with_origin_country": "HU"
+        }
+      },
+      "description": "TMDB Discover (movie)"
+    },
+    "instId": "14"
+  },
+  {
+    "id": "tmdb.discover.hungarian_cinema_recent_new_hungarian_releases",
+    "collectionTitle": "International Cinema",
+    "folderTitle": "Hungarian Cinema",
+    "sourceTitle": "Recent & New Hungarian Releases",
+    "name": "Recent & New Hungarian Releases",
+    "type": "movie",
+    "source": "tmdb",
+    "metadata": {
+      "itemCount": 200,
+      "mediatype": "movie",
+      "author": "Kaptain",
+      "discover": {
+        "version": 2,
+        "source": "tmdb",
+        "mediaType": "movie",
+        "params": {
+          "sort_by": "primary_release_date.desc",
+          "include_adult": false,
+          "without_genres": "16,99",
+          "primary_release_date.lte": "2026-09-01",
+          "with_release_type": "4|5|6",
+          "with_original_language": "hu",
+          "vote_count.gte": 5,
+          "primary_release_date.gte": "2024-01-01",
+          "with_origin_country": "HU"
+        }
+      },
+      "description": "TMDB Discover (movie)"
+    },
+    "instId": "14"
+  },
+  {
+    "id": "tmdb.discover.hungarian_cinema_popular_hungarian_tv_series_dramas",
+    "collectionTitle": "International Cinema",
+    "folderTitle": "Hungarian Cinema",
+    "sourceTitle": "Popular Hungarian TV Series & Dramas",
+    "name": "Popular Hungarian TV Series & Dramas",
+    "type": "series",
+    "source": "tmdb",
+    "metadata": {
+      "itemCount": 200,
+      "mediatype": "series",
+      "author": "Kaptain",
+      "discover": {
+        "version": 2,
+        "source": "tmdb",
+        "mediaType": "tv",
+        "params": {
+          "sort_by": "popularity.desc",
+          "include_adult": false,
+          "without_genres": "16,10764,10767,10763",
+          "first_air_date.lte": "2026-09-01",
+          "with_status": "0|3|4|5",
+          "with_original_language": "hu",
+          "vote_count.gte": 10,
+          "with_origin_country": "HU"
+        }
+      },
+      "description": "TMDB Discover (tv)"
+    },
+    "instId": "14"
+  },
+  {
+    "id": "tmdb.discover.hungarian_cinema_hungarian_action_crime_thrillers",
+    "collectionTitle": "International Cinema",
+    "folderTitle": "Hungarian Cinema",
+    "sourceTitle": "Hungarian Action, Crime & Thrillers",
+    "name": "Hungarian Action, Crime & Thrillers",
+    "type": "movie",
+    "source": "tmdb",
+    "metadata": {
+      "itemCount": 200,
+      "mediatype": "movie",
+      "author": "Kaptain",
+      "discover": {
+        "version": 2,
+        "source": "tmdb",
+        "mediaType": "movie",
+        "params": {
+          "sort_by": "popularity.desc",
+          "include_adult": false,
+          "without_genres": "16,99",
+          "primary_release_date.lte": "2026-09-01",
+          "with_release_type": "4|5|6",
+          "with_genres": "28|80|53",
+          "with_original_language": "hu",
+          "vote_count.gte": 10,
+          "with_origin_country": "HU"
+        }
+      },
+      "description": "TMDB Discover (movie)"
+    },
+    "instId": "14"
+  },
+  {
+    "id": "tmdb.discover.hungarian_cinema_hungarian_drama_romance_comedy_hits",
+    "collectionTitle": "International Cinema",
+    "folderTitle": "Hungarian Cinema",
+    "sourceTitle": "Hungarian Drama, Romance & Comedy Hits",
+    "name": "Hungarian Drama, Romance & Comedy Hits",
+    "type": "movie",
+    "source": "tmdb",
+    "metadata": {
+      "itemCount": 200,
+      "mediatype": "movie",
+      "author": "Kaptain",
+      "discover": {
+        "version": 2,
+        "source": "tmdb",
+        "mediaType": "movie",
+        "params": {
+          "sort_by": "popularity.desc",
+          "include_adult": false,
+          "without_genres": "16,99",
+          "primary_release_date.lte": "2026-09-01",
+          "with_release_type": "4|5|6",
+          "with_genres": "18|10749|35",
+          "with_original_language": "hu",
+          "vote_count.gte": 50,
+          "with_origin_country": "HU"
+        }
+      },
+      "description": "TMDB Discover (movie)"
+    },
+    "instId": "14"
   }
 ]

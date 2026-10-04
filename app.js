@@ -804,7 +804,7 @@ function sortByTitle(arr, dir) {
 // Majors first, then the rest A–Z. Used by Guided Customize, Quick Editor, and folder-sort.
 window.POPULAR_SERVICES_ORDER = [
   'Netflix', 'Prime Video', 'Disney+', 'HBO Max', 'Apple TV+',
-  'Paramount+', 'Hulu', 'Peacock', 'Crunchyroll', 'Starz'
+  'Paramount+', 'SkyShowtime', 'Hulu', 'Peacock', 'Crunchyroll', 'Starz'
 ];
 
 function sortStreamingByPopular(arr) {
@@ -1413,6 +1413,7 @@ function providerDisplayName(source) {
   if (source.provider === 'addon') {
     if (isBingecatAddonId(source.addonId)) return 'Bingecat AI';
     const catalogId = String(source.catalogId || '');
+    if (catalogId.indexOf('flixpatrol.') === 0) return 'FlixPatrol';
     if (catalogId.indexOf('mdblist.') === 0) return 'MDBList';
     if (catalogId.indexOf('trakt.') === 0) return 'Trakt';
     return 'your recommendation service';
@@ -1427,6 +1428,7 @@ function providerDisplayName(source) {
 function getSourceName(source) {
   if (source.title) return source.title;
   if (source.provider === 'addon') {
+    if (window.KaptainRegions.parseFlixPatrol(source.catalogId)) return 'FlixPatrol · Top 10';
     return ADDON_CATALOG_LABELS[source.catalogId] || (isBingecatAddonId(source.addonId) ? 'Bingecat AI' : 'Trakt-powered');
   }
   return 'Source';
@@ -1434,6 +1436,7 @@ function getSourceName(source) {
 
 function getProviderLabel(source) {
   if (source.provider === 'addon') {
+    if (window.KaptainRegions.parseFlixPatrol(source.catalogId)) return 'FlixPatrol · Top 10';
     return ADDON_CATALOG_LABELS[source.catalogId] || (isBingecatAddonId(source.addonId) ? 'Bingecat AI' : 'Trakt-powered');
   }
   const provider = (source.provider || 'tmdb').toUpperCase();
@@ -3503,7 +3506,10 @@ function assembleFilteredDatabase(optimize) {
 
       sources.forEach(source => {
         if (selectedMap[folderKey] && selectedMap[folderKey][getSourceKey(source)]) {
-                    let clonedSource = { ...source };
+          const selectedCountry = window.kaptainCustomize?.country || window.kaptainCustomize?.countries?.[0];
+          const regional = window.KaptainRegions.regionalize(source, selectedCountry, window.KAPTAIN_FLIXPATROL_AVAILABILITY);
+          if (!regional.source) return; // Omit unavailable charts; keep other selected rows.
+          let clonedSource = regional.source;
           
           if (window.kaptainCustomize || window.kaptainExcludeAnime || window.kaptainExcludeBollywood) {
             clonedSource.filters = { ...(clonedSource.filters || {}) };
@@ -3532,7 +3538,7 @@ function assembleFilteredDatabase(optimize) {
             }
             
             // Region and Language — only for TMDB / Discover catalog sources.
-            // Addon / For You / other providers keep their own region wiring.
+            // FlixPatrol addon IDs were regionalized above; other addon wiring is preserved.
             const providerLower = String(clonedSource.provider || 'tmdb').toLowerCase();
             const isAddon = providerLower === 'addon' || clonedSource.provider === 'addon';
             const isForYouFolder = String(folder.title || '').trim().toLowerCase() === 'for you';
@@ -3556,7 +3562,7 @@ function assembleFilteredDatabase(optimize) {
                 f.watch_region = regionCode;
                 f.watchRegion = regionCode;
               }
-              if (cust.foreignNative === false && cust.locale) {
+              if (cust.foreignNative === false && cust.locale && !f.withOriginCountry && !f.with_origin_country) {
                 // If foreign language is off, force to user chosen language
                 f.withOriginalLanguage = cust.locale;
                 // Scale vote floor down so filtered rows still fill with titles
@@ -3600,6 +3606,13 @@ function assembleFilteredDatabase(optimize) {
       if (activeSources.length > 0) {
         const folderClone = { ...folder };
         folderClone.sources = activeSources;
+        // Keep addon references consistent with the selected, regionalized sources.
+        if (folder.catalogSources?.length) {
+          folderClone.catalogSources = activeSources.filter(s => s.provider === 'addon').map(s => ({
+            title: s.title || s.name || '', type: s.type, genre: s.genre || 'None',
+            addonId: s.addonId, catalogId: s.catalogId
+          }));
+        }
         if (!gifsAllowedForCategory(category)) delete folderClone.focusGifUrl;
         filteredFolders.push(folderClone);
       }

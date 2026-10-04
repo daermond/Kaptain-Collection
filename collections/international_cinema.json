@@ -4,6 +4,122 @@
     "title": "International Cinema",
     "folders": [
       {
+        "id": "folder-HUNGARIAN-CINEMA",
+        "title": "Hungarian Cinema",
+        "tileShape": "LANDSCAPE",
+        "coverImageUrl": "https://flagcdn.com/w640/hu.png",
+        "coverEmoji": "🇭🇺",
+        "hideTitle": false,
+        "focusGifEnabled": false,
+        "sources": [
+          {
+            "id": "src-HUNGARIAN-CINEMA-1",
+            "title": "Popular Hungarian Movies",
+            "provider": "tmdb",
+            "mediaType": "MOVIE",
+            "tmdbSourceType": "DISCOVER",
+            "sortBy": "popularity.desc",
+            "filters": {
+              "withOriginCountry": "HU",
+              "voteCountGte": 50,
+              "vote_count.gte": 50,
+              "withOriginalLanguage": "hu",
+              "with_original_language": "hu"
+            },
+            "genre": "Popular Hungarian Movies",
+            "name": "Popular Hungarian Movies"
+          },
+          {
+            "id": "src-HUNGARIAN-CINEMA-2",
+            "title": "Top Rated & Acclaimed Hungarian Movies",
+            "provider": "tmdb",
+            "mediaType": "MOVIE",
+            "tmdbSourceType": "DISCOVER",
+            "sortBy": "vote_average.desc",
+            "filters": {
+              "vote_count.gte": 100,
+              "withOriginCountry": "HU",
+              "voteCountGte": 100,
+              "withOriginalLanguage": "hu",
+              "with_original_language": "hu"
+            },
+            "genre": "Top Rated & Acclaimed Hungarian Movies",
+            "name": "Top Rated & Acclaimed Hungarian Movies"
+          },
+          {
+            "id": "src-HUNGARIAN-CINEMA-3",
+            "title": "Recent & New Hungarian Releases",
+            "provider": "tmdb",
+            "mediaType": "MOVIE",
+            "tmdbSourceType": "DISCOVER",
+            "sortBy": "primary_release_date.desc",
+            "filters": {
+              "releaseDateGte": "2024-01-01",
+              "voteCountGte": 5,
+              "vote_count.gte": 5,
+              "withOriginCountry": "HU",
+              "withOriginalLanguage": "hu",
+              "with_original_language": "hu"
+            },
+            "genre": "Recent & New Hungarian Releases",
+            "name": "Recent & New Hungarian Releases"
+          },
+          {
+            "id": "src-HUNGARIAN-CINEMA-4",
+            "title": "Popular Hungarian TV Series & Dramas",
+            "provider": "tmdb",
+            "mediaType": "TV",
+            "tmdbSourceType": "DISCOVER",
+            "sortBy": "popularity.desc",
+            "filters": {
+              "withOriginCountry": "HU",
+              "voteCountGte": 10,
+              "vote_count.gte": 10,
+              "withOriginalLanguage": "hu",
+              "with_original_language": "hu"
+            },
+            "genre": "Popular Hungarian TV Series & Dramas",
+            "name": "Popular Hungarian TV Series & Dramas"
+          },
+          {
+            "id": "src-HUNGARIAN-CINEMA-5",
+            "title": "Hungarian Action, Crime & Thrillers",
+            "provider": "tmdb",
+            "mediaType": "MOVIE",
+            "tmdbSourceType": "DISCOVER",
+            "sortBy": "popularity.desc",
+            "filters": {
+              "withGenres": "28|80|53",
+              "withOriginCountry": "HU",
+              "voteCountGte": 10,
+              "vote_count.gte": 10,
+              "withOriginalLanguage": "hu",
+              "with_original_language": "hu"
+            },
+            "genre": "Hungarian Action, Crime & Thrillers",
+            "name": "Hungarian Action, Crime & Thrillers"
+          },
+          {
+            "id": "src-HUNGARIAN-CINEMA-6",
+            "title": "Hungarian Drama, Romance & Comedy Hits",
+            "provider": "tmdb",
+            "mediaType": "MOVIE",
+            "tmdbSourceType": "DISCOVER",
+            "sortBy": "popularity.desc",
+            "filters": {
+              "withGenres": "18|10749|35",
+              "withOriginCountry": "HU",
+              "voteCountGte": 50,
+              "vote_count.gte": 50,
+              "withOriginalLanguage": "hu",
+              "with_original_language": "hu"
+            },
+            "genre": "Hungarian Drama, Romance & Comedy Hits",
+            "name": "Hungarian Drama, Romance & Comedy Hits"
+          }
+        ]
+      },
+      {
         "id": "folder-DAKK95AS",
         "title": "Latin American Cinema",
         "tileShape": "LANDSCAPE",

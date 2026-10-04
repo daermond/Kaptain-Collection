@@ -10490,3 +10490,6 @@ kbd {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 }
+
+/* Availability hint in Guided Customize streaming cards. */
+.cust-chart-hint { font-size: 12px; line-height: 1.5; opacity: .8; margin: 0 0 12px; }

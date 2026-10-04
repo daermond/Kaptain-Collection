@@ -25,6 +25,7 @@
     { code: 'DK', flag: '🇩🇰', label: 'Denmark' },
     { code: 'FI', flag: '🇫🇮', label: 'Finland' },
     { code: 'PL', flag: '🇵🇱', label: 'Poland' },
+    { code: 'HU', flag: '🇭🇺', label: 'Hungary' },
     { code: 'PT', flag: '🇵🇹', label: 'Portugal' },
     { code: 'BR', flag: '🇧🇷', label: 'Brazil' },
     { code: 'TR', flag: '🇹🇷', label: 'Turkey' },
@@ -678,7 +679,12 @@
     const streamingCat = data.find(c => c.title === 'Streaming Services');
     
     if (streamingCat && streamingCat.folders) {
-       html = '<div class="cust-logo-grid" id="stream-grid">';
+       const hints = streamingCat.folders.map(f => {
+         const hint = window.KaptainRegions.chartHint(f, window.customizeState.country, window.KAPTAIN_FLIXPATROL_AVAILABILITY);
+         return hint ? `${escapeHtml(f.title)}: ${escapeHtml(hint)}` : '';
+       }).filter(Boolean);
+       html = (hints.length ? `<p class="cust-chart-hint">${hints.join('<br>')}</p>` : '')
+         + '<div class="cust-logo-grid" id="stream-grid">';
        const folders = streamingCat.folders.slice();
        const sortMode = window.customizeState.streamingSort || 'popular';
        if (sortMode === 'az') {

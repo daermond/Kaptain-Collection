@@ -874,7 +874,7 @@
       name: id,
       enabled: true,
       showInHome: false,
-      source: String(id).indexOf('mdblist.') === 0 ? 'mdblist' : 'custom',
+      source: window.KaptainRegions.parseFlixPatrol(id) ? 'flixpatrol' : (String(id).indexOf('mdblist.') === 0 ? 'mdblist' : 'custom'),
       sort: 'default',
       order: 'asc',
       cacheTTL: 86400,
@@ -1150,6 +1150,7 @@
         ];
         const unionTemplate = [...JSON.parse(AIO_PRESET_JSON).catalogs, ...MDBLIST_CATALOG_TEMPLATE];
         aioConfig.catalogs = labelForYouCatalogNames(unionTemplate.filter((c) => wantedIds.includes(c.id)));
+        aioConfig.catalogs.push(...(state.regionalChartCatalogs || window.KaptainRegions.chartCatalogs(assembleFilteredDatabase(shouldOptimizeExport()))));
         if (!aioConfig.apiKeys) aioConfig.apiKeys = {};
         aioConfig.hideUnreleasedDigital = true;
         aioConfig.hideUnreleasedShows = true;
@@ -1189,6 +1190,10 @@
         await window.NuvioPush.installAddons(state.token, state.targetProfileId, addonsToInstall);
       }
 
+      // The shared For You instance now includes the regional charts too.
+      if (state.regionalChartCatalogs?.length && (isForYouProviderOn('trakt') || isForYouProviderOn('mdblist'))) {
+        await window.NuvioPush.removeAddonsByName(state.token, state.targetProfileId, 'AIO Metadata (Regional Top 10)');
+      }
       const collections = assembleFilteredDatabase(shouldOptimizeExport());
       applyForYouSources(collections);
       ensureCollectionDefaults(collections);
@@ -1703,6 +1708,7 @@
   }
 
   function open(opts) {
+    state.regionalChartCatalogs = null;
     state.flow = (opts && opts.flow === 'starter') ? 'starter'
                : (opts && opts.flow === 'collection-only') ? 'collection-only'
                : 'collection';
@@ -2917,8 +2923,11 @@
     return index;
   }
 
-  function aioTemplateLookup(templateIndex, colTitle, folderTitle, sourceTitle) {
-    return templateIndex.get(`${colTitle}|||${folderTitle}|||${sourceTitle}`) || null;
+  function aioTemplateLookup(templateIndex, colTitle, folderTitle, sourceTitle, source) {
+    const entry = templateIndex.get(`${colTitle}|||${folderTitle}|||${sourceTitle}`)
+      || (folderTitle === 'SkyShowtime' ? templateIndex.get(`${colTitle}|||Netflix|||${sourceTitle}`) : null)
+      || null;
+    return source ? window.KaptainRegions.catalogEntry(entry, source, colTitle, folderTitle) : entry;
   }
 
   // Re-adds the constant boilerplate fields the published template strips out
@@ -3022,7 +3031,7 @@
     // sources are present with no changes needed, since both ride the same
     // addonId placeholder.
     const allCatalogs = collections.flatMap(c =>
-      (c.folders || []).flatMap(f => (f.sources || []).filter(s => s.provider === 'addon' && s.addonId === 'aio-metadata').map(s => s.catalogId))
+      (c.folders || []).flatMap(f => (f.sources || []).filter(s => s.provider === 'addon' && s.addonId === 'aio-metadata' && !window.KaptainRegions.parseFlixPatrol(s.catalogId)).map(s => s.catalogId))
     );
     const uniqueCatalogs = [...new Set(allCatalogs)];
     // If no catalogs were found at all, fall back to the 4 default Trakt
@@ -3042,8 +3051,8 @@
     collections.forEach((c) => {
       (c.folders || []).forEach((f) => {
         (f.sources || []).forEach((s) => {
-          if (s.provider === 'addon') return; // "For You" placeholders, handled above
-          const entry = aioTemplateLookup(templateIndex, c.title, f.title, s.title);
+          if (s.provider === 'addon' && !window.KaptainRegions.parseFlixPatrol(s.catalogId)) return; // For You handled above
+          const entry = aioTemplateLookup(templateIndex, c.title, f.title, s.title, s);
           if (!entry) {
             console.warn(`[AIO Streams] No catalog template entry for "${c.title} / ${f.title} / ${s.title}" - leaving it on native routing.`);
             return;
@@ -3550,7 +3559,7 @@
             canonicalId = s.catalogId; // "For You" placeholder — already its own canonical id
           } else if (s.provider === 'tmdb' || s.provider === 'trakt') {
             if (s.tmdbSourceType === 'COLLECTION') {
-              const entry = aioTemplateLookup(templateIndex, colTitle, folderTitle, s.title);
+              const entry = aioTemplateLookup(templateIndex, colTitle, folderTitle, s.title, s);
               if (entry && (entry.source === 'trakt' || (entry.source === 'tmdb' && entry.id && entry.id.startsWith('tmdb.list.')))) {
                 canonicalId = entry.id;
                 entryType = entry.type;
@@ -3558,7 +3567,7 @@
                 return; // Keep native TMDB Collection
               }
             } else {
-              const entry = aioTemplateLookup(templateIndex, colTitle, folderTitle, s.title);
+              const entry = aioTemplateLookup(templateIndex, colTitle, folderTitle, s.title, s);
               canonicalId = entry ? entry.id : null;
               entryType = entry ? entry.type : null;
             }
@@ -3600,7 +3609,14 @@
         collections.forEach((c) => {
           (c.folders || []).forEach((f) => {
             (f.sources || []).forEach((s) => repoint(s, c.title, f.title));
-            (f.catalogSources || []).forEach((s) => repoint(s, c.title, f.title));
+            // catalogSources lacks provider, so repoint() cannot reliably route it.
+            // Rebuild references from the sources that were actually provisioned.
+            if (f.catalogSources?.length) {
+              f.catalogSources = (f.sources || []).filter(s => s.provider === 'addon').map(s => ({
+                title: s.title || s.name || '', type: s.type, genre: s.genre || 'None',
+                addonId: s.addonId, catalogId: s.catalogId
+              }));
+            }
           });
         });
         // Also force the push when Bingecat is checked: repoint() correctly
@@ -4548,6 +4564,7 @@
       const placed = new Set(merged.map((c) => c.id));
       [...kept, ...incoming].forEach((c) => { if (!placed.has(c.id) && !excluded.has(c.id)) { merged.push(c); placed.add(c.id); } });
     }
+    await ensureRegionalChartAddon(merged, state.selectedProfileId);
     ensureCollectionDefaults(merged);
     await window.NuvioPush.pushCollections(state.token, state.selectedProfileId, merged);
     state.collectionRows = incoming.length;
@@ -4610,6 +4627,24 @@
     return profile;
   }
 
+  async function ensureRegionalChartAddon(collections, profileId) {
+    if (getActiveFriendPack()) return; // Friend setup provisions its own catalog pack.
+    const catalogs = window.KaptainRegions.chartCatalogs(collections);
+    state.regionalChartCatalogs = catalogs;
+    if (!catalogs.length) return;
+    state.pushingLabel = 'Setting up regional Top 10 charts...';
+    render();
+    const host = await checkAioMetadataInstances();
+    const config = JSON.parse(AIO_PRESET_JSON);
+    config.catalogs = catalogs;
+    config.search = aioSearchConfig(false);
+    applyAioMetadataSearchGlobals(config);
+    if (state.tmdbKey) config.apiKeys.tmdb = state.tmdbKey;
+    const saved = await saveFriendAioConfig(host, config);
+    if (!saved.success || !saved.installUrl) throw new Error('Could not configure regional Top 10 charts. Please retry.');
+    await window.NuvioPush.installAddons(state.token, profileId, [{ name: 'AIO Metadata (Regional Top 10)', url: saved.installUrl }]);
+  }
+
   // Full push of the current selection to a brand-new / freshly-chosen profile.
   async function doPushCollection(profileId) {
     state.pushingLabel = 'Loading your collection...';
@@ -4621,6 +4656,7 @@
     if (!collections || collections.length === 0) {
       throw new Error('No folders are selected, so there is nothing to send.');
     }
+    await ensureRegionalChartAddon(collections, profileId);
     ensureCollectionDefaults(collections);
     await window.NuvioPush.pushCollections(state.token, profileId, collections);
     state.collectionRows = collections.length;
@@ -6134,11 +6170,11 @@
     collections.forEach((c) => {
       (c.folders || []).forEach((f) => {
         (f.sources || []).forEach((s) => {
-          if (s.provider === 'addon') {
+          if (s.provider === 'addon' && !window.KaptainRegions.parseFlixPatrol(s.catalogId)) {
             if (s.addonId === 'aio-metadata' && s.catalogId) traktCatalogs.push(s.catalogId);
             return;
           }
-          const entry = aioTemplateLookup(templateIndex, c.title, f.title, s.title);
+          const entry = aioTemplateLookup(templateIndex, c.title, f.title, s.title, s);
           if (!entry) return;
           
           const key = `${entry.id}::${entry.type}`;
@@ -6200,13 +6236,13 @@
             return;
           }
           if (s.tmdbSourceType === 'COLLECTION') {
-            const entry = aioTemplateLookup(templateIndex, colTitleEn, folderTitleEn, s.title);
+            const entry = aioTemplateLookup(templateIndex, colTitleEn, folderTitleEn, s.title, s);
             if (!entry || (entry.source !== 'trakt' && (!entry.id || !entry.id.startsWith('tmdb.list.')))) {
               newSources.push({ ...s });
               return;
             }
           }
-          const entry = aioTemplateLookup(templateIndex, colTitleEn, folderTitleEn, s.title);
+          const entry = aioTemplateLookup(templateIndex, colTitleEn, folderTitleEn, s.title, s);
           if (entry) {
             const mappedType = entry.type || (s.mediaType === 'TV' ? 'series' : 'movie');
             const newSrc = {
