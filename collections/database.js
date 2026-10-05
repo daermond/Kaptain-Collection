@@ -2167,20 +2167,20 @@ window.NUVIO_DATABASE = [
             "id": "src-SKYSHOWTIME-MOVIE-TOP10",
             "title": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "genre": "None",
             "provider": "addon",
             "addonId": "aio-metadata",
             "type": "movie",
+            "genre": "None",
             "catalogId": "flixpatrol.skyshowtime.hu.movie"
           },
           {
             "id": "src-SKYSHOWTIME-SERIES-TOP10",
             "title": "Top 10 Series",
             "name": "Top 10 Series",
-            "genre": "None",
             "provider": "addon",
             "addonId": "aio-metadata",
             "type": "series",
+            "genre": "None",
             "catalogId": "flixpatrol.skyshowtime.hu.series"
           },
           {
@@ -3442,26 +3442,22 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-C30E4OXM",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679739
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.netflix.us.movie"
           },
           {
             "id": "src-EC7QPZHU",
             "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 34806593,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "name": "Top 10 Series",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "genre": "None",
+            "catalogId": "flixpatrol.netflix.us.series"
           },
           {
             "title": "New Movies",
@@ -4702,7 +4698,22 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/networks/213-netflix/logos/color/213_color_1.png?raw=true",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/49571953.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.netflix.us.movie"
+          },
+          {
+            "title": "Top 10 Series",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "catalogId": "flixpatrol.netflix.us.series"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/networks/213-netflix/backdrops/t2_flat_1080p.jpg?raw=true"
       },
@@ -4713,26 +4724,22 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-HV5RSCL1",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679741
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.apple-tv.us.movie"
           },
           {
             "id": "src-7A087PRH",
             "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015159,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "name": "Top 10 Series",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "genre": "None",
+            "catalogId": "flixpatrol.apple-tv.us.series"
           },
           {
             "title": "New Movies",
@@ -5748,7 +5755,22 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/networks/2552-apple-tv/logos/color/2552_color_1.png?raw=true",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/4d8f0a8f.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.apple-tv.us.movie"
+          },
+          {
+            "title": "Top 10 Series",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "catalogId": "flixpatrol.apple-tv.us.series"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/networks/2552-apple-tv/backdrops/t2_flat_1080p.jpg?raw=true"
       },
@@ -5759,26 +5781,22 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-NXBW7M4M",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679743
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.hulu.us.movie"
           },
           {
             "id": "src-NT9G4FAH",
             "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015572,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "name": "Top 10 Series",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "genre": "None",
+            "catalogId": "flixpatrol.hulu.us.series"
           },
           {
             "title": "New Movies",
@@ -6990,7 +7008,22 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/networks/453-hulu/logos/color/453_color_1.png?raw=true",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/3a4d1b46.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.hulu.us.movie"
+          },
+          {
+            "title": "Top 10 Series",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "catalogId": "flixpatrol.hulu.us.series"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/15-hulu/backdrops/t2_flat_1080p.jpg"
       },
@@ -7001,26 +7034,22 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-WBSNC06Y",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679742
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.amazon-prime.us.movie"
           },
           {
             "id": "src-AR837UHC",
             "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015161,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "name": "Top 10 Series",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "genre": "None",
+            "catalogId": "flixpatrol.amazon-prime.us.series"
           },
           {
             "title": "New Movies",
@@ -8235,7 +8264,22 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/f9b1d40a.webp",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/5c86c888.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.amazon-prime.us.movie"
+          },
+          {
+            "title": "Top 10 Series",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "catalogId": "flixpatrol.amazon-prime.us.series"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/9-amazon-prime-video/backdrops/t2_flat_1080p.jpg"
       },
@@ -8245,27 +8289,13 @@ window.NUVIO_DATABASE = [
         "sources": [
           {
             "id": "src-GMYBA521",
-            "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
-            "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679755
-          },
-          {
-            "id": "src-CAWUWIYM",
-            "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35016391,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "title": "Top 10",
+            "name": "Top 10",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "genre": "None",
+            "catalogId": "flixpatrol.amc.us.all"
           },
           {
             "title": "New Movies",
@@ -9404,7 +9434,15 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://raw.githubusercontent.com/ImKaptain/nuvio-assets/main/collections/providers/526-amc/logos/color/4661_amc_1.png",
         "coverImageUrl": "https://raw.githubusercontent.com/ImKaptain/nuvio-art/main/art/streaming-services/amcplus/amcplus-cover.png",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "catalogId": "flixpatrol.amc.us.all"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/ImKaptain/nuvio-assets/main/collections/providers/526-amc/backdrops/t2_flat_1080p.jpg"
       },
@@ -10134,27 +10172,13 @@ window.NUVIO_DATABASE = [
         "sources": [
           {
             "id": "src-6BAQGIWS",
-            "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
-            "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679744
-          },
-          {
-            "id": "src-4GD9OYX3",
-            "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015582,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "title": "Top 10",
+            "name": "Top 10",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "genre": "None",
+            "catalogId": "flixpatrol.crunchyroll.us.all"
           },
           {
             "title": "New Movies",
@@ -10532,7 +10556,15 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Crunchyroll_logo_2024.png/960px-Crunchyroll_logo_2024.png?_=20240720022613",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/129a4038.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "catalogId": "flixpatrol.crunchyroll.us.all"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/283-crunchyroll/backdrops/t2_flat_1080p.jpg"
       },
@@ -10850,27 +10882,13 @@ window.NUVIO_DATABASE = [
         "sources": [
           {
             "id": "src-LP8ZWNVP",
-            "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
-            "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679745
-          },
-          {
-            "id": "src-02UXVTP6",
-            "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015583,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "title": "Top 10",
+            "name": "Top 10",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "genre": "None",
+            "catalogId": "flixpatrol.discovery-plus.us.all"
           },
           {
             "title": "New Movies",
@@ -11198,7 +11216,15 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/4676e4ff.webp",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/dbed63f2.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "catalogId": "flixpatrol.discovery-plus.us.all"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/8815e841.webp"
       },
@@ -11209,26 +11235,22 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-L0FV4FHF",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679746
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.disney.us.movie"
           },
           {
             "id": "src-JKPO4FL2",
             "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015585,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "name": "Top 10 Series",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "genre": "None",
+            "catalogId": "flixpatrol.disney.us.series"
           },
           {
             "title": "New Movies",
@@ -12386,7 +12408,22 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/networks/2739-disney/logos/color/2739_color_4.png?raw=true",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/b8c0d25b.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.disney.us.movie"
+          },
+          {
+            "title": "Top 10 Series",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "catalogId": "flixpatrol.disney.us.series"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/337-disney-plus/backdrops/t2_flat_1080p.jpg"
       },
@@ -12478,26 +12515,22 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-NAKEAXAF",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679740
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.hbo-max.us.movie"
           },
           {
             "id": "src-6919CBLV",
             "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 34807642,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "name": "Top 10 Series",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "genre": "None",
+            "catalogId": "flixpatrol.hbo-max.us.series"
           },
           {
             "title": "New Movies",
@@ -13682,7 +13715,22 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/6e4c10d3.webp",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/b59babf1.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.hbo-max.us.movie"
+          },
+          {
+            "title": "Top 10 Series",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "catalogId": "flixpatrol.hbo-max.us.series"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/1899-hbo-max/backdrops/t2_flat_1080p.jpg"
       },
@@ -13788,27 +13836,13 @@ window.NUVIO_DATABASE = [
         "sources": [
           {
             "id": "src-WYC5KX6C",
-            "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
-            "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679747
-          },
-          {
-            "id": "src-HZWTM6LG",
-            "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015604,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "title": "Top 10",
+            "name": "Top 10",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "genre": "None",
+            "catalogId": "flixpatrol.mgm.us.all"
           },
           {
             "title": "New Movies",
@@ -14865,7 +14899,15 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/networks/6219-mgm/logos/color/6219_color_1.png?raw=true",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/d490e713.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "catalogId": "flixpatrol.mgm.us.all"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/34-mgm-plus/backdrops/t2_flat_1080p.jpg"
       },
@@ -14875,27 +14917,13 @@ window.NUVIO_DATABASE = [
         "sources": [
           {
             "id": "src-WK5INPYB",
-            "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
-            "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679748
-          },
-          {
-            "id": "src-GLJI8ABX",
-            "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015607,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "title": "Top 10",
+            "name": "Top 10",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "genre": "None",
+            "catalogId": "flixpatrol.mubi.gb.all"
           },
           {
             "title": "New Movies",
@@ -15415,7 +15443,15 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/refs/heads/main/collections/companies/204957-mubi/logos/white/204957_white_2.png",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/7c4bd708.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "catalogId": "flixpatrol.mubi.gb.all"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/refs/heads/main/collections/companies/204957-mubi/backdrops/t2_flat_1080p.jpg"
       },
@@ -15426,26 +15462,22 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-S0XN9805",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679749
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.paramount.us.movie"
           },
           {
             "id": "src-N5531K1U",
             "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015608,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "name": "Top 10 Series",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "genre": "None",
+            "catalogId": "flixpatrol.paramount.us.series"
           },
           {
             "title": "New Movies",
@@ -16611,7 +16643,22 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/networks/4330-paramount/logos/color/4330_color_2.png?raw=true",
         "coverImageUrl": "https://raw.githubusercontent.com/ImKaptain/nuvio-art/refs/heads/main/art/streaming-services/paramount-plus/paramount-plus-cover.png",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.paramount.us.movie"
+          },
+          {
+            "title": "Top 10 Series",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "catalogId": "flixpatrol.paramount.us.series"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/2303-paramount-plus-premium/backdrops/t2_flat_1080p.jpg"
       },
@@ -16622,26 +16669,22 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-PZ9OOI7Z",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679750
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.peacock.us.movie"
           },
           {
             "id": "src-J7VEG16N",
             "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015609,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "name": "Top 10 Series",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "genre": "None",
+            "catalogId": "flixpatrol.peacock.us.series"
           },
           {
             "title": "New Movies",
@@ -17725,7 +17768,22 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/networks/3353-peacock/logos/color/3353_color_1.png?raw=true",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/970b675f.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.peacock.us.movie"
+          },
+          {
+            "title": "Top 10 Series",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "catalogId": "flixpatrol.peacock.us.series"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/386-peacock-premium/backdrops/t2_flat_1080p.jpg"
       },
@@ -17736,26 +17794,12 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-UFEUZ6YB",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679754
-          },
-          {
-            "id": "src-7B3Z2N68",
-            "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35016354,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.pluto.us.movie"
           },
           {
             "title": "New Movies",
@@ -18944,7 +18988,15 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Pluto_TV_logo_2024.svg/500px-Pluto_TV_logo_2024.svg.png",
         "coverImageUrl": "https://raw.githubusercontent.com/ImKaptain/nuvio-art/main/art/streaming-services/pluto-tv/pluto-tv-cover.png",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.pluto.us.movie"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/ImKaptain/nuvio-assets/main/collections/providers/300-pluto-tv/backdrops/t2_flat_1080p.jpg"
       },
@@ -18954,27 +19006,13 @@ window.NUVIO_DATABASE = [
         "sources": [
           {
             "id": "src-RNC259EO",
-            "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
-            "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679751
-          },
-          {
-            "id": "src-F9W9BJGU",
-            "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015620,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "title": "Top 10",
+            "name": "Top 10",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "genre": "None",
+            "catalogId": "flixpatrol.shudder.us.all"
           },
           {
             "title": "New Movies",
@@ -19376,7 +19414,15 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://github.com/bramst0ne/prism-wallpapers/blob/main/collections/companies/142877-shudder/logos/color/142877_color_1.png?raw=true",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/99e24ce1.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "catalogId": "flixpatrol.shudder.us.all"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/99-shudder/backdrops/t2_flat_1080p.jpg"
       },
@@ -19387,26 +19433,22 @@ window.NUVIO_DATABASE = [
           {
             "id": "src-DGABOT9O",
             "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
             "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679752
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "genre": "None",
+            "catalogId": "flixpatrol.starz.us.movie"
           },
           {
             "id": "src-KQUT84VW",
             "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35015621,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "name": "Top 10 Series",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "genre": "None",
+            "catalogId": "flixpatrol.starz.us.series"
           },
           {
             "title": "New Movies",
@@ -20462,7 +20504,22 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/262762fd.webp",
         "coverImageUrl": "https://imkaptain.github.io/nuvio-assets/assets/images/9e92f9b6.webp",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10 Movies",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "movie",
+            "catalogId": "flixpatrol.starz.us.movie"
+          },
+          {
+            "title": "Top 10 Series",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "series",
+            "catalogId": "flixpatrol.starz.us.series"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/bramst0ne/prism-wallpapers/main/collections/providers/43-starz/backdrops/t2_flat_1080p.jpg"
       },
@@ -20472,27 +20529,13 @@ window.NUVIO_DATABASE = [
         "sources": [
           {
             "id": "src-L2VK53MZ",
-            "title": "Top 10 Movies",
-            "provider": "tmdb",
-            "mediaType": "MOVIE",
-            "sortBy": "original",
-            "filters": {},
-            "genre": "Top 10 Movies",
-            "name": "Top 10 Movies",
-            "tmdbSourceType": "LIST",
-            "tmdbId": 8679753
-          },
-          {
-            "id": "src-B9E5UBZF",
-            "title": "Top 10 Series",
-            "provider": "trakt",
-            "mediaType": "TV",
-            "traktListId": 35016314,
-            "sortBy": "rank",
-            "sortHow": "asc",
-            "filters": {},
-            "genre": "Top 10 Series",
-            "name": "Top 10 Series"
+            "title": "Top 10",
+            "name": "Top 10",
+            "provider": "addon",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "genre": "None",
+            "catalogId": "flixpatrol.tubi.us.all"
           },
           {
             "title": "New Movies",
@@ -21709,7 +21752,15 @@ window.NUVIO_DATABASE = [
         "heroVideoUrl": "",
         "titleLogoUrl": "https://raw.githubusercontent.com/ImKaptain/nuvio-assets/main/collections/companies/153734-tubi/logos/color/153734_color_1.png",
         "coverImageUrl": "https://raw.githubusercontent.com/ImKaptain/nuvio-art/main/art/streaming-services/tubi/tubi-cover.png",
-        "catalogSources": [],
+        "catalogSources": [
+          {
+            "title": "Top 10",
+            "genre": "None",
+            "addonId": "aio-metadata",
+            "type": "all",
+            "catalogId": "flixpatrol.tubi.us.all"
+          }
+        ],
         "focusGifEnabled": true,
         "heroBackdropUrl": "https://raw.githubusercontent.com/ImKaptain/nuvio-assets/main/collections/companies/153734-tubi/backdrops/t2_flat_1080p.jpg"
       }

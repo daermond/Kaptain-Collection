@@ -266,14 +266,18 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.netflix.us.movie"
+            "catalogId": "flixpatrol.netflix.us.movie",
+            "title": "Top 10 Movies",
+            "name": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.netflix.us.series"
+            "catalogId": "flixpatrol.netflix.us.series",
+            "title": "Top 10 Series",
+            "name": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -334,13 +338,15 @@ window.NUVIO_DATABASE = [
             "type": "movie",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.netflix.us.movie"
+            "catalogId": "flixpatrol.netflix.us.movie",
+            "title": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.netflix.us.series"
+            "catalogId": "flixpatrol.netflix.us.series",
+            "title": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -397,14 +403,18 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.apple-tv.us.movie"
+            "catalogId": "flixpatrol.apple-tv.us.movie",
+            "title": "Top 10 Movies",
+            "name": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.apple-tv.us.series"
+            "catalogId": "flixpatrol.apple-tv.us.series",
+            "title": "Top 10 Series",
+            "name": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -444,13 +454,15 @@ window.NUVIO_DATABASE = [
             "type": "movie",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.apple-tv.us.movie"
+            "catalogId": "flixpatrol.apple-tv.us.movie",
+            "title": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.apple-tv.us.series"
+            "catalogId": "flixpatrol.apple-tv.us.series",
+            "title": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -489,14 +501,18 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.hbo-max.us.movie"
+            "catalogId": "flixpatrol.hbo-max.us.movie",
+            "title": "Top 10 Movies",
+            "name": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.hbo-max.us.series"
+            "catalogId": "flixpatrol.hbo-max.us.series",
+            "title": "Top 10 Series",
+            "name": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -557,13 +573,15 @@ window.NUVIO_DATABASE = [
             "type": "movie",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.hbo-max.us.movie"
+            "catalogId": "flixpatrol.hbo-max.us.movie",
+            "title": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.hbo-max.us.series"
+            "catalogId": "flixpatrol.hbo-max.us.series",
+            "title": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -620,14 +638,18 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.disney.us.movie"
+            "catalogId": "flixpatrol.disney.us.movie",
+            "title": "Top 10 Movies",
+            "name": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.disney.us.series"
+            "catalogId": "flixpatrol.disney.us.series",
+            "title": "Top 10 Series",
+            "name": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -702,13 +724,15 @@ window.NUVIO_DATABASE = [
             "type": "movie",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.disney.us.movie"
+            "catalogId": "flixpatrol.disney.us.movie",
+            "title": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.disney.us.series"
+            "catalogId": "flixpatrol.disney.us.series",
+            "title": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -777,14 +801,18 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.amazon-prime.us.movie"
+            "catalogId": "flixpatrol.amazon-prime.us.movie",
+            "title": "Top 10 Movies",
+            "name": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.amazon-prime.us.series"
+            "catalogId": "flixpatrol.amazon-prime.us.series",
+            "title": "Top 10 Series",
+            "name": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -824,13 +852,15 @@ window.NUVIO_DATABASE = [
             "type": "movie",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.amazon-prime.us.movie"
+            "catalogId": "flixpatrol.amazon-prime.us.movie",
+            "title": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.amazon-prime.us.series"
+            "catalogId": "flixpatrol.amazon-prime.us.series",
+            "title": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -869,14 +899,18 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.paramount.us.movie"
+            "catalogId": "flixpatrol.paramount.us.movie",
+            "title": "Top 10 Movies",
+            "name": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.paramount.us.series"
+            "catalogId": "flixpatrol.paramount.us.series",
+            "title": "Top 10 Series",
+            "name": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -930,13 +964,15 @@ window.NUVIO_DATABASE = [
             "type": "movie",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.paramount.us.movie"
+            "catalogId": "flixpatrol.paramount.us.movie",
+            "title": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.paramount.us.series"
+            "catalogId": "flixpatrol.paramount.us.series",
+            "title": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -987,14 +1023,18 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.peacock.us.movie"
+            "catalogId": "flixpatrol.peacock.us.movie",
+            "title": "Top 10 Movies",
+            "name": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.peacock.us.series"
+            "catalogId": "flixpatrol.peacock.us.series",
+            "title": "Top 10 Series",
+            "name": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -1041,13 +1081,15 @@ window.NUVIO_DATABASE = [
             "type": "movie",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.peacock.us.movie"
+            "catalogId": "flixpatrol.peacock.us.movie",
+            "title": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.peacock.us.series"
+            "catalogId": "flixpatrol.peacock.us.series",
+            "title": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -1092,14 +1134,18 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.hulu.us.movie"
+            "catalogId": "flixpatrol.hulu.us.movie",
+            "title": "Top 10 Movies",
+            "name": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.hulu.us.series"
+            "catalogId": "flixpatrol.hulu.us.series",
+            "title": "Top 10 Series",
+            "name": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -1139,13 +1185,15 @@ window.NUVIO_DATABASE = [
             "type": "movie",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.hulu.us.movie"
+            "catalogId": "flixpatrol.hulu.us.movie",
+            "title": "Top 10 Movies"
           },
           {
             "type": "series",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.hulu.us.series"
+            "catalogId": "flixpatrol.hulu.us.series",
+            "title": "Top 10 Series"
           },
           {
             "type": "movie",
@@ -1263,7 +1311,9 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.discovery-plus.us.all"
+            "catalogId": "flixpatrol.discovery-plus.us.all",
+            "title": "Top 10",
+            "name": "Top 10"
           },
           {
             "type": "series",
@@ -1296,7 +1346,8 @@ window.NUVIO_DATABASE = [
             "type": "all",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.discovery-plus.us.all"
+            "catalogId": "flixpatrol.discovery-plus.us.all",
+            "title": "Top 10"
           },
           {
             "type": "series",
@@ -1329,7 +1380,9 @@ window.NUVIO_DATABASE = [
             "genre": "None",
             "addonId": "aio-metadata",
             "provider": "addon",
-            "catalogId": "flixpatrol.crunchyroll.us.all"
+            "catalogId": "flixpatrol.crunchyroll.us.all",
+            "title": "Top 10",
+            "name": "Top 10"
           },
           {
             "type": "series",
@@ -1376,7 +1429,8 @@ window.NUVIO_DATABASE = [
             "type": "all",
             "genre": "None",
             "addonId": "aio-metadata",
-            "catalogId": "flixpatrol.crunchyroll.us.all"
+            "catalogId": "flixpatrol.crunchyroll.us.all",
+            "title": "Top 10"
           },
           {
             "type": "series",

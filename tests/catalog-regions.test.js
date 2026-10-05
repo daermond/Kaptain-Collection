@@ -117,7 +117,9 @@ test('native regional chart provisioning includes selected catalogs and waits fo
   const collections = vm.runInContext('assembleFilteredDatabase()', ctx);
   await ctx.window.__testRegions.ensureRegionalChartAddon(collections, 3);
   assert.equal(saves.length, 1);
-  assert.deepEqual(saves[0].catalogs.map(c => c.id), ['flixpatrol.skyshowtime.hu.movie', 'flixpatrol.skyshowtime.hu.series']);
+  const huServices = ['skyshowtime', 'netflix', 'apple-tv', 'amazon-prime', 'disney', 'hbo-max'];
+  assert.deepEqual(saves[0].catalogs.map(c => c.id), huServices.flatMap(service =>
+    ['movie', 'series'].map(type => `flixpatrol.${service}.hu.${type}`)));
   for (const catalog of saves[0].catalogs) {
     assert.equal(catalog.metadata.countrySlug, 'hungary');
     assert.equal(catalog.enableRatingPosters, true);
@@ -126,8 +128,10 @@ test('native regional chart provisioning includes selected catalogs and waits fo
   assert.equal(installs[0][2][0].name, 'AIO Metadata (Regional Top 10)');
   ctx.window.kaptainCustomize.country = 'US';
   await ctx.window.__testRegions.ensureRegionalChartAddon(vm.runInContext('assembleFilteredDatabase()', ctx), 3);
-  assert.equal(saves.length, 1);
-  assert.equal(ctx.window.__testRegions.state.regionalChartCatalogs.length, 0);
+  assert.equal(saves.length, 2);
+  assert.equal(ctx.window.__testRegions.state.regionalChartCatalogs.length, 25);
+  assert.ok(!saves[1].catalogs.some(c => c.id.includes('.skyshowtime.')));
+  assert.ok(!saves[1].catalogs.some(c => c.id.includes('.mubi.')));
 });
 
 test('friend collection export regionalizes and removes deselected catalog references', () => {
@@ -220,7 +224,7 @@ for (const country of ['HU', 'NL', 'US']) {
       assert.equal(folder.catalogSources.length, folder.sources.length);
     }
     const charts = aio.catalogs.filter(c => c.source === 'flixpatrol');
-    assert.equal(charts.length, country === 'US' ? 0 : 2);
+    assert.equal(charts.length, country === 'US' ? 4 : 6);
     for (const chart of charts) {
       assert.ok(chart.id.includes(`.${country.toLowerCase()}.`));
       assert.equal(chart.metadata.countrySlug, regions.REGION_SLUGS[country]);

@@ -37,9 +37,9 @@ async function generatedChartPaths(country = 'HU') {
     const collections = vm.runInContext('assembleFilteredDatabase()', ctx);
     if (label === 'native') output.native = regions.chartCatalogs(collections);
     else {
-      const { ids, typeById } = wizard.collectSelectedAioCatalogIds(collections);
+      const { ids, typeById, nameById } = wizard.collectSelectedAioCatalogIds(collections);
       const templates = JSON.parse(read('collections/kaoxt-aio-catalogs.json'));
-      output.friend = wizard.filterFriendCatalogs(Array.isArray(templates) ? templates : templates.catalogs, ids, typeById)
+      output.friend = wizard.filterFriendCatalogs(Array.isArray(templates) ? templates : templates.catalogs, ids, typeById, nameById)
         .filter(c => regions.parseFlixPatrol(c.id));
     }
     const selfHost = await ctx.window.NuvioWizard.generateSelfHostExport();

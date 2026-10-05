@@ -1,9 +1,40 @@
-# Kaptain Collection regional catalog preview
+# Kaptain Collection personal fork
 
-This development fork adds Hungary to Guided Customize, regional FlixPatrol
+This personal fork adds Hungary to Guided Customize, regional FlixPatrol
 charts, SkyShowtime, and Hungarian Cinema to the existing static editor.
 
 Preview: https://daermond.github.io/Kaptain-Collection/
+
+## Provider Top 10 lists (2026-10-05)
+
+The 18 Streaming Services folders that had Top 10 lists now use FlixPatrol
+through AIO Metadata, replacing their TMDB/Trakt Top 10 sources. Native, friend,
+Self-Host and AIO Streams setups use consistent catalog/source names:
+
+- **Top 10 Movies** and **Top 10 Series** for services with separate charts.
+- One **Top 10** for combined charts (AMC+, Crunchyroll, Discovery+, MGM+, Mubi,
+  Shudder and Tubi TV), avoiding duplicate movie/series rows for the same chart.
+- **Top 10 Movies** only for Pluto TV, which has no separate series chart.
+
+For Hungary, Netflix, Apple TV+, Prime Video, Disney+, HBO Max and SkyShowtime
+have both movie and series charts. Unsupported regional charts are omitted;
+the provider's New, Popular, Top Rated and genre lists remain. Providers without
+existing Top 10 rows are left unchanged. Country selection follows the existing
+availability rules. With no country selected, the baseline is US except
+SkyShowtime (HU) and Mubi (GB), whose US charts do not exist.
+
+Friend catalog setup now carries each selected chart's readable title through
+both matching templates and newly synthesized regional catalogs. A bare catalog
+ID is no longer used as the default FlixPatrol display name. Source names,
+catalog names and exported catalog references agree, including after media-type
+regionalization. Re-run Guided Setup or regenerate/apply the export to update
+an existing Nuvio profile and its AIO catalogs.
+
+Validation: 44 offline tests passed. Separate live crawler checks on 2026-10-05
+passed for HU/NL (66 generated descriptors per region), US (129 descriptors)
+and GB (87 descriptors, including Mubi).
+These checks verify names, country metadata, chart lookup and usable TMDB IDs;
+Nuvio device rendering and metadata hydration remain separate checks.
 
 ## FlixPatrol runtime compatibility fix (2026-10-04)
 
@@ -81,8 +112,8 @@ response plus the Nuvio row would resolve that question.
 
 SkyShowtime discovery rows use TMDB provider **1773** and the selected
 `watch_region` / `watchRegion` (for example `HU`). Top 10 rows use
-`flixpatrol.skyshowtime.hu.movie` and `.series` for Hungary. Netflix and HBO Max's
-existing TMDB/Trakt Top 10 lists are preserved. Existing FlixPatrol addon sources,
+`flixpatrol.skyshowtime.hu.movie` and `.series` for Hungary. The other provider
+Top 10 lists also use FlixPatrol. Existing FlixPatrol addon sources,
 including the Kaoxt friend pack, use the same generic regionalization rules.
 
 Hungarian Cinema uses `withOriginCountry=HU` and `withOriginalLanguage=hu`,
@@ -144,6 +175,7 @@ third-party dependency or secret requirement.
 npm test
 npm run validate:flixpatrol
 npm run validate:flixpatrol -- --region NL
+npm run validate:flixpatrol -- --region US
 python -m http.server 8080 --bind 127.0.0.1
 ```
 
@@ -176,36 +208,32 @@ TMDB entries; the remaining checked NL charts had 10.
 The static editor works on GitHub Pages. The optional Python YouTube/GIF helper
 is not hosted there; it still requires the supplied local server.
 
-## GitHub Pages and upstream sync
+## Personal maintenance and GitHub Pages
 
-The fork's `main` is kept at upstream. GitHub Pages is configured to deploy the
-root directory of `hu-skyshowtime`, so testing does not require merging it into
-`main`. In Settings → Pages choose **Deploy from a branch**, **hu-skyshowtime**, **/ (root)**.
+Personal changes live on **personal-flixpatrol**. GitHub Pages is configured to
+deploy its root directory, so updates do not require merging into `main`.
+In Settings → Pages choose **Deploy from a branch**, **personal-flixpatrol**, **/ (root)**.
 No custom domain or paid hosting is needed. Commits to that branch update the preview.
 
-To refresh the upstream baseline without merging feature changes into `main`:
+To publish further personal changes:
 
 ```sh
-git fetch upstream
-git switch main
-git merge --ff-only upstream/main
-git push origin main
-git switch hu-skyshowtime
-git merge upstream/main
+git switch personal-flixpatrol
 npm test
-git push origin hu-skyshowtime
+git push origin personal-flixpatrol
 ```
 
-The feature PR can target this fork's `main` for review, and the same branch can
-be proposed to `ImKaptain/Kaptain-Collection:main`. Keep the fork while its Pages
-preview and upstream PR are needed. Once upstream accepts the change and its
-site is verified, the personal fork can be deleted; doing so also removes this preview.
+There is no upstream PR for the personal branch. The earlier `hu-skyshowtime`
+branch was already attached to an upstream draft PR; it is left unchanged so
+personal changes do not appear there. Keep the fork to keep the preview and
+its bundled artwork available. Future upstream updates can be reviewed and
+merged into the personal branch when wanted; they are not synced automatically.
 
 ## License status
 
 Upstream had no explicit project license at inspection. This fork does not add
 one or claim rights over upstream code or external artwork. GitHub permits
 viewing and forking public repositories, but absence of a license does not grant
-general reuse or redistribution rights. This is a development/testing fork and
-proposed contribution. Further redistribution should consider licensing with
+general reuse or redistribution rights. This is a personal development/testing
+fork. Further redistribution should consider licensing with
 the upstream author. See [GitHub's licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).

@@ -18,6 +18,11 @@
     return match ? { service: match[1], country: match[2], type: match[3], variant: match[4] } : null;
   }
 
+  function chartName(id) {
+    const parsed = parseFlixPatrol(id);
+    return parsed ? (parsed.type === 'movie' ? 'Top 10 Movies' : parsed.type === 'series' ? 'Top 10 Series' : 'Top 10') : null;
+  }
+
   function regionalize(source, country, availability) {
     const parsed = parseFlixPatrol(source.catalogId);
     const selected = String(country || '').toUpperCase();
@@ -48,7 +53,7 @@
     if (countrySlug) metadata.countrySlug = countrySlug;
     return {
       id: source.catalogId, type: parsed.type,
-      name: source.title || source.name || source.catalogId, source: 'flixpatrol',
+      name: source.title || source.name || chartName(source.catalogId), source: 'flixpatrol',
       enabled: true, showInHome: false, displayType: source.displayType || (parsed.type === 'all' ? 'movie' : parsed.type),
       genreSelection: 'standard', sort: 'default', order: 'asc', cacheTTL: 86400,
       enableRatingPosters: true, metadata
@@ -117,5 +122,5 @@
     return results.length ? `Top 10 charts use ${country}. Requires AIO Metadata; Guided Setup installs it.` : '';
   }
 
-  return { REGION_SLUGS, parseFlixPatrol, regionalize, chartCatalog, chartCatalogs, catalogEntry, chartHint };
+  return { REGION_SLUGS, parseFlixPatrol, chartName, regionalize, chartCatalog, chartCatalogs, catalogEntry, chartHint };
 });

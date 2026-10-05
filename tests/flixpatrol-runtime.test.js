@@ -71,7 +71,7 @@ test('locked/global/unknown/unsupported region policy still controls the final d
 test('real native, friend, Self-Host and AIO converter outputs resolve against pinned crawler data', async () => {
   const paths = await generatedChartPaths('HU');
   const results = await checkPaths(paths, async () => fixture);
-  assert.equal(results.length, 36);
+  assert.equal(results.length, 66);
   for (const result of results) assert.equal(result.entries, 10, `${result.path}/${result.id}`);
   for (const id of ['flixpatrol.netflix.hu.movie', 'flixpatrol.hbo-max.hu.series', 'flixpatrol.skyshowtime.hu.movie']) {
     assert.ok(results.some(r => r.id === id));

@@ -848,6 +848,7 @@
   function collectSelectedAioCatalogIds(collections) {
     const ids = new Set();
     const typeById = {};
+    const nameById = {};
     (collections || []).forEach((c) => {
       (c.folders || []).forEach((f) => {
         (f.sources || []).forEach((s) => {
@@ -859,15 +860,16 @@
           if (s.addonId === 'aio-metadata' || String(cid).indexOf('mdblist.') === 0) {
             ids.add(cid);
             if (!typeById[cid]) typeById[cid] = s.type || 'movie';
+            if (!nameById[cid] && window.KaptainRegions.parseFlixPatrol(cid)) nameById[cid] = s.title || s.name || window.KaptainRegions.chartName(cid);
           }
         });
       });
     });
-    return { ids: [...ids], typeById };
+    return { ids: [...ids], typeById, nameById };
   }
 
-  function synthesizeFriendCatalog(id, typeHint) {
-    const chart = window.KaptainRegions.chartCatalog({ catalogId: id });
+  function synthesizeFriendCatalog(id, typeHint, nameHint) {
+    const chart = window.KaptainRegions.chartCatalog({ catalogId: id, title: nameHint });
     if (chart) return chart;
     const type = typeHint === 'series' || typeHint === 'tv' ? 'series' : (typeHint === 'all' ? 'all' : 'movie');
     return {
@@ -899,17 +901,17 @@
     return { catalogs, base: base && typeof base === 'object' ? base : {} };
   }
 
-  function filterFriendCatalogs(allCatalogs, wantedIds, typeById) {
+  function filterFriendCatalogs(allCatalogs, wantedIds, typeById, nameById = {}) {
     const byId = new Map();
     (allCatalogs || []).forEach((c) => { if (c && c.id) byId.set(c.id, c); });
     const out = [];
     wantedIds.forEach((id) => {
       if (byId.has(id)) {
         const entry = JSON.parse(JSON.stringify(byId.get(id)));
-        const chart = window.KaptainRegions.chartCatalog({ ...entry, catalogId: id });
+        const chart = window.KaptainRegions.chartCatalog({ ...entry, catalogId: id, title: nameById[id] });
         // Templates can also lack a slug (or contain one for the old region).
-        out.push(chart ? { ...chart, ...entry, type: chart.type, source: chart.source, metadata: chart.metadata } : entry);
-      } else out.push(synthesizeFriendCatalog(id, typeById[id]));
+        out.push(chart ? { ...chart, ...entry, name: chart.name, type: chart.type, source: chart.source, metadata: chart.metadata } : entry);
+      } else out.push(synthesizeFriendCatalog(id, typeById[id], nameById[id]));
     });
     return out;
   }
@@ -5445,9 +5447,9 @@
         throw new Error('No folders are selected, so there is nothing to send.');
       }
 
-      const { ids: wantedIds, typeById } = collectSelectedAioCatalogIds(collections);
+      const { ids: wantedIds, typeById, nameById } = collectSelectedAioCatalogIds(collections);
       const { catalogs: allCatalogs, base } = await loadFriendAioAssets(pack);
-      const filtered = filterFriendCatalogs(allCatalogs, wantedIds, typeById);
+      const filtered = filterFriendCatalogs(allCatalogs, wantedIds, typeById, nameById);
 
       let preferred = state.friendAioInstance || 'auto';
       if (preferred === 'auto') preferred = await checkAioMetadataInstances();
